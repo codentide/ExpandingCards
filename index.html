@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ExpandingCards</title>
+
+    <link rel="stylesheet" href="expanding-cards.css">
+
+    <style>
+        h1 {
+            /* display: inline; */
+            font-size: 24px;
+            line-height: 24px;
+        }
+
+        span {
+            display: flex;
+            flex-direction: column;
+            gap: 0px;
+
+            /* align-items: baseline; */
+            margin-bottom: 8px;
+            text-align: center;
+
+            color: var(--main);
+
+            text-transform: uppercase;
+        }
+    </style>
+
+
+    <!-- TODO Añadir description y un icono diferente a cada tarjeta -->
+</head>
+
+<body>
+
+    <span>
+        <h1>Expanding Cards</h1><small>by Marco Del Boccio</small>
+    </span>
+
+    <section class="card-container">
+
+        <div class="card-item"><img src="./assets/1.jpg" alt="item-1" class="card-background"></div>
+        <div class="card-item"><img src="./assets/2.jpg" alt="item-2" class="card-background"></div>
+        <div class="card-item active"><img src="./assets/3.jpg" alt="item-3" class="card-background"></div>
+        <div class="card-item"><img src="./assets/4.jpg" alt="item-4" class="card-background"></div>
+        <div class="card-item"><img src="./assets/5.jpg" alt="item-5" class="card-background"></div>
+
+    </section>
+
+    <script>
+
+        const cardItems = document.querySelectorAll('.card-item')
+
+        cardItems.forEach((cardItem) => {
+
+            cardItem.addEventListener('click', () => {
+
+                //Eliminar la clase de todos los elementos
+                cardItems.forEach((cardItem) => {
+                    cardItem.classList.remove("active")
+                })
+
+                //Añadir la clase solo al elemento seleccionado
+                cardItem.classList.add("active")
+
+            })
+
+        });
+
+    </script>
+
+</body>
+
+</html>
