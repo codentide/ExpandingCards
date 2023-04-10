@@ -1,11 +1,11 @@
-@import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Viga&family=Work+Sans:wght@400;600&display=swap");
 :root {
   --dark-1: #1b1c1e;
   --dark-2: #1f1f1f;
   --dark-3: #2b2b2b;
   --dark-4: #303030;
   --dark-5: #3d3d3d;
-  --main: #a4b274;
+  --main: #b3ce5a;
 }
 
 * {
@@ -47,7 +47,6 @@ body {
   padding: 8px;
   border-radius: 4px;
 
-  border: 1px solid var(--main);
   background-color: var(--dark-1);
 
   box-shadow: 0px 24px 38px 3px rgba(0, 0, 0, 0.14),
@@ -57,6 +56,11 @@ body {
 /* Tarjeta expansible */
 
 .card-item {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+
   flex: 0 1 60%;
   height: 100%;
 
@@ -64,10 +68,10 @@ body {
 
   cursor: pointer;
   overflow: hidden;
-  /* Transición de expansión */
+  /* Transición de expansión, Transición del hover*/
   transition: flex 0.4s ease, filter 0.4s ease;
 
-  border: 1px solid var(--dark-4);
+  outline: 1px solid var(--dark-5);
   background-color: var(--dark-2);
 }
 
@@ -75,6 +79,9 @@ body {
 
 .active {
   flex: 1 0 60%;
+  outline: 1px solid var(--main);
+
+  transition: flex 0.4s ease, filter 0.4s ease;
 }
 
 /* Hover para elemenos menos el elemento expandido */
@@ -95,6 +102,8 @@ body {
   border-radius: 2px;
 
   filter: grayscale(100%) contrast(60%) brightness(0.6);
+  /* Transición de salida */
+  transition: scale 0.2s ease, filter 0.2s ease;
 }
 
 /* Img dentro de la tarjeta expandida */
@@ -105,5 +114,100 @@ body {
 
   /* Este efecto corre luego de expandir la tarjeta con un delay de .5s */
 
-  transition: scale 0.6s ease 0.5s, filter 0.6s ease 0.5s;
+  transition: scale 0.6s ease 0.5s, filter 0.6s ease 0.4s;
+}
+
+.card-item-info {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  /* gap: 12px; */
+
+  width: 100%;
+  height: 68px;
+
+  padding: 12px;
+  margin-top: auto;
+
+  color: var(--main);
+
+  transition: justify-content 0.4s ease 0.2s;
+}
+
+.active .card-item-info {
+  gap: 12px;
+}
+
+.card-item-info::after {
+  position: absolute;
+  /* top: 0; */
+  left: 0;
+  bottom: 0;
+  z-index: -1;
+
+  transform: translateY(100%);
+
+  content: "";
+
+  width: 100%;
+  height: 200px;
+
+  transition: transform 0.3s ease;
+
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.886) 30%, transparent);
+}
+
+.active .card-item-info::after {
+  transform: translateY(0);
+
+  transition: transform 0.6s ease 0.5s;
+}
+
+.card-item-info .info-text {
+  width: 0;
+  opacity: 0;
+}
+
+.active .card-item-info .info-text {
+  width: auto;
+  opacity: 1;
+  transition: opacity 0.4s ease 1s, width 0.2s ease 2s;
+}
+
+.card-item-info .info-icon {
+  display: grid;
+  place-items: center;
+
+  min-width: 44px;
+  height: 44px;
+
+  font-family: "Viga", monospace;
+  font-size: 24px;
+
+  padding: 2px 4px;
+  border-radius: 2px;
+
+  color: var(--main);
+  background-color: var(--dark-1);
+
+  transition: all 0.4s ease;
+  /* border: 1px solid var(--main); */
+}
+
+.active .card-item-info .info-icon {
+  color: var(--dark-1);
+  background-color: var(--main);
+
+  transition: all 0.4s ease;
+}
+
+.card-item-info .info-text h3 {
+  color: var(--main);
+}
+.card-item-info .info-text p {
+  color: #b7b7b7;
 }

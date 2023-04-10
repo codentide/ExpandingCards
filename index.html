@@ -9,69 +9,96 @@
 
     <link rel="stylesheet" href="style.css">
 
-    <style>
-        h1 {
-            /* display: inline; */
-            font-size: 24px;
-            line-height: 24px;
-        }
-
-        span {
-            display: flex;
-            flex-direction: column;
-            gap: 0px;
-
-            /* align-items: baseline; */
-            margin-bottom: 8px;
-            text-align: center;
-
-            color: var(--main);
-
-            text-transform: uppercase;
-        }
-    </style>
-
+    <script defer src="./expanding-cards.js"></script>
 
     <!-- TODO Añadir description y un icono diferente a cada tarjeta -->
 </head>
 
 <body>
 
-    <span>
-        <h1>Expanding Cards</h1><small>by Marco Del Boccio</small>
-    </span>
-
     <section class="card-container">
 
-        <div class="card-item"><img src="./assets/1.jpg" alt="item-1" class="card-background"></div>
-        <div class="card-item"><img src="./assets/2.jpg" alt="item-2" class="card-background"></div>
-        <div class="card-item active"><img src="./assets/3.jpg" alt="item-3" class="card-background"></div>
-        <div class="card-item"><img src="./assets/4.jpg" alt="item-4" class="card-background"></div>
-        <div class="card-item"><img src="./assets/5.jpg" alt="item-5" class="card-background"></div>
+        <div class="card-item">
+
+            <img src="./assets/1.jpg" alt="item-1" class="card-background">
+            <div class="card-item-info">
+
+                <span class="info-icon">14</span>
+                <span class="info-text">
+                    <h3>Magma</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur.</p>
+                </span>
+
+
+            </div>
+
+        </div>
+
+        <div class="card-item">
+
+            <img src="./assets/2.jpg" alt="item-2" class="card-background">
+            <div class="card-item-info">
+
+                <span class="info-icon">28</span>
+                <span class="info-text">
+                    <h3>Treko</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur.</p>
+                </span>
+
+
+            </div>
+
+        </div>
+
+        <div class="card-item active">
+
+            <img src="./assets/3.jpg" alt="item-3" class="card-background">
+            <div class="card-item-info">
+
+                <span class="info-icon">32</span>
+                <span class="info-text">
+                    <h3>Automateus</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur.</p>
+                </span>
+
+
+            </div>
+
+        </div>
+
+        <div class="card-item">
+
+            <img src="./assets/4.jpg" alt="item-4" class="card-background">
+            <div class="card-item-info">
+
+                <span class="info-icon">46</span>
+                <span class="info-text">
+                    <h3>Raccon</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur.</p>
+                </span>
+
+
+            </div>
+
+        </div>
+
+        <div class="card-item">
+
+            <img src="./assets/5.jpg" alt="item-5" class="card-background">
+            <div class="card-item-info">
+
+                <span class="info-icon">59</span>
+                <span class="info-text">
+                    <h3>Imperfect</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur.</p>
+                </span>
+
+
+            </div>
+
+        </div>
 
     </section>
-
-    <script>
-
-        const cardItems = document.querySelectorAll('.card-item')
-
-        cardItems.forEach((cardItem) => {
-
-            cardItem.addEventListener('click', () => {
-
-                //Eliminar la clase de todos los elementos
-                cardItems.forEach((cardItem) => {
-                    cardItem.classList.remove("active")
-                })
-
-                //Añadir la clase solo al elemento seleccionado
-                cardItem.classList.add("active")
-
-            })
-
-        });
-
-    </script>
 
 </body>
 
